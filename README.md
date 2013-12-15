@@ -23,16 +23,10 @@ from scouring other people's dotfile repos, blogs, and projects.
   * Apple-style philosophy: make everything Just Work and Look Good. Don't worry about too many options.
   * All common commands should be two and three character mnemonic aliases - less keystrokes, RSI reduction
   * Avoid stressful hand motions, e.g. remap Esc to caps lock key, remap underscore to Alt-k in vim, make window management in vim easy.
-  * Easy to use plugin architecture, no config files to edit.
   * Pick one tool and use it everywhere: vim-ize everything
-  * Beautiful, easy to read and small vimrc**
-  * No key overrides or custom hackery in vimrc, everything in well factored snippets in .vim/settings**
   * Much larger list of vim plugins than Janus, specifically geared to Ruby/Rails/Git development.
   * Optimized support for Solarized color scheme only, everything guaranteed to Look Good. Your eyes will thank you.
-  * All plugins tested with Solarized and custom color maps provided where needed to ensure your eyes will not bleed.
-  * No configuration file to maintain. YADR uses tiny ruby scripts to wrap git submodule maintenance.
-  * Much cleaner vimrc that keps keymaps isolated to a plugin file (not in the main vimrc).
-  * All keymaps and customization in small, easy to maintain files under .vim/settings
+  * All vim keymaps and customizations are in small, easy to maintain files under .vim/settings
   * More than just vim plugins - great shell aliases, osx, and irb/pry tweaks to make you more productive.
 
 ## Screenshot
@@ -40,8 +34,7 @@ from scouring other people's dotfile repos, blogs, and projects.
 
 # Installation
 
-Installation is automated via `rake` and the `yadr` command. To get
-started please run:
+To get started please run:
 
 ```bash
 sh -c "`curl -fsSL https://raw.github.com/skwp/dotfiles/master/install.sh`"
@@ -53,13 +46,17 @@ about each one, use:
 sh -c "`curl -fsSL https://raw.github.com/skwp/dotfiles/master/install.sh`" -s ask
 ```
 
-# Additional Installation
+# Install iTerm Theme
 
  * [Highly recommended: Install iTerm theme](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized)
+
+
+# Remap your caps-lock to use vim like it was desgined
+
  * [Highly recommended: Remap caps-lock to escape with PCKeyboardHack](http://pqrs.org/macosx/keyremap4macbook/pckeyboardhack.html)
 
 The escape key is the single most used key in vim.
-Old keyboards used to have Ctrl where caps lock is today. But it's even better if you put escape there.
+Old keyboards used to have Escape where Tab is today. Apple keyboards are the worst with their tiny Esc keys. But all this is fixed by remapping Caps to Escape.
 If you're hitting a small target in the corner, you are slowing yourself down considerably, and probably damaging your hands with repetitive strain injuries.
 
 ### Upgrading
@@ -68,7 +65,7 @@ Upgrading is easy.
 
 ```bash
 cd ~/.yadr
-git pull origin master
+gplr
 rake update
 ```
 
@@ -102,7 +99,7 @@ After a lifetime of bash, I am now using ZSH as my default shell because of its 
 and autocomplete features (the spelling fixer autocomplete is worth the money alone).
 
 Migrating from bash to zsh is essentially pain free. The zshrc provided here
-restores a few features that I felt was 'broken' including Ctrl-R reverse history search.
+restores a few features that I felt were 'broken' including Ctrl-R reverse history search.
 
 Lots of things I do every day are done with two or three character
 mnemonic aliases. Please feel free to edit them:
@@ -117,7 +114,7 @@ Prezto is included as a submodule.
 
 ### Adding your own ZSH theme
 
-If you want to add your own zsh theme, you can place it into ~/.zsh.prompts and it will automatically be picked up by the prompt loader.
+If you want to add your own zsh theme, you can place it in `~/.zsh.prompts` and it will automatically be picked up by the prompt loader.
 
 Make sure you follow the naming convention of `prompt_[name]_setup`
 
@@ -129,8 +126,8 @@ See also the [Prezto](https://github.com/sorin-ionescu/prezto) project for more 
 
 ### Customizing ZSH & Picking a theme
 
-If you want to customize your zsh experience, yadr provides two hooks via ~/.zsh.after/ and ~/.zsh.before/ directories.
-In these directories, you can place files to customize things that load before and after other zsh customizations that come from ~/.yadr/zsh/*
+If you want to customize your zsh experience, yadr provides two hooks via `~/.zsh.after/` and `~/.zsh.before/` directories.
+In these directories, you can place files to customize things that load before and after other zsh customizations that come from `~/.yadr/zsh/*`
 
 For example, to override the theme, you can do something like this:
 ```
@@ -163,16 +160,17 @@ It is recommended to use this file to set your user info. Alternately, you can s
 
 ### Git Customizations:
 
-  * `git l` - a much more usable git log
-  * `git b` - a list of branches with summary of last commit
+  * `git l` or `gl`- a much more usable git log
+  * `git b` or `gb`- a list of branches with summary of last commit
   * `git r` - a list of remotes with info
-  * `git t` - a list of tags with info
-  * `git nb` - a (n)ew (b)ranch - like checkout -b
-  * `git cp` - cherry-pick -x (showing what was cherrypicked)
+  * `git t` or `gt`- a list of tags with info
+  * `git nb` or `gnb`- a (n)ew (b)ranch - like checkout -b
+  * `git cp` or `gcp`- cherry-pick -x (showing what was cherrypicked)
   * `git changelog` - a nice format for creating changelogs
+  * `git recent-branches` - if you forgot what you've been working on
   * Some sensible default configs, such as improving merge messages, push only pushes the current branch, removing status hints, and using mnemonic prefixes in diff: (i)ndex, (w)ork tree, (c)ommit and (o)bject
   * Slightly improved colors for diff
-  * `git unstage` (remove from index) and `git uncommit` (revert to the time prior to the last commit - dangerous if already pushed) aliases
+  * `git unstage` / `guns` (remove from index) and `git uncommit` / `gunc` (revert to the time prior to the last commit - dangerous if already pushed) aliases
 
 ### RubyGems
 
@@ -180,7 +178,7 @@ A .gemrc is included. Never again type `gem install whatever --no-ri --no-rdoc`.
 
 ### Tmux configuration
 
-`tmux.conf` provides some sane defaults for tmux on Mac OS, a powerful status bar and vim keybindings.
+`tmux.conf` provides some sane defaults for tmux on Mac OS like a powerful status bar and vim keybindings.
 You can customize the configuration in `~/.tmux.conf.user`.
 
 ### Vimization of everything
@@ -190,14 +188,14 @@ also an included Ctrl-R reverse history search feature in editrc, very useful in
 
 ### Vim Configuration
 
-The .vimrc is well commented and broken up by settings. I encourage you
+The `.vimrc` is well commented and broken up by settings. I encourage you
 to take a look and learn some of my handy aliases, or comment them out
 if you don't like them, or make your own.
 
 
 ### Vim Keymaps
 
-The files in vim/settings are customizations stored on a per-plugin
+The files in `vim/settings` are customizations stored on a per-plugin
 basis. The main keymap is available in skwp-keymap.vim, but some of the vim
 files contain key mappings as well (TODO: probably will move them out to skwp-keymap.vim)
 
@@ -217,17 +215,18 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * `Ctrl-i` - opposite of Ctrl-O (again, this is standard)
 
 
-#### Rails
-
+#### Rails & Ruby
+ * vim-ruby-refactoring - try `,rem`, `,rel` to extract methods or let statements
  * `Cmd-Shift-R` to use vim-ruby-conque to run a spec file. `Cmd-Shift-L` to run from a line (individual it block), `,Cmd-Shift-R` to rerun the last run command (great for re-running specs)
  * :Rspec1 and :Rspec2 to switch between rspec versions for the vim-ruby-conque runner
- * `,vv` and `,cc` to switch between view and controller
+ * `,vv` and `,cc` to switch between view and controller - these are maps to :Rcontroller and :Rview. Explore the :R<Tab> family of commands for more fun from rails.vim!
 
 #### Surround.vim customizations
 
- * in settings/surround.vim (this folder contains all my customizations)
- * the `#` key now surrounds with `#{}`, so `ysaw#` (surround around word) `#{foo}`
+ * the `#` key now surrounds with `#{}` for ruby string interpolation, so `ysaw#` (surround around word) `#{foo}`
  * `=` surrounds with `<%= erb tag %>`; `-` for `<% this %>`. So, `yss=` or `yss-` to wrap code
+ * Surround any word with any character by using these combos: `,'`, `,"`, `,#` and so on. 
+ * Edit anything inside [brackets], "quotes", 'singles', etc by using Cmd+[the character in question]. So to edit inside [brackets] you use `Cmd-[`
 
 #### Search/Code Navigation
 
@@ -353,15 +352,15 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
 
 #### Git
 
- * fugitive - "a git wrapper so awesome, it should be illegal...". Try Gstatus and hit `-` to toggle files. Git `d` to see a diff. Learn more: http://vimcasts.org/blog/2011/05/the-fugitive-series/
+ * fugitive - "a git wrapper so awesome, it should be illegal...". Try `:Gstatus` and hit `-` to toggle files in and out of the index. Git `d` to see a diff. Use `git mergetool` or `gmt` to launch vim as a mergetool. The left buffer is your branch, the right is the incoming change, and in the middle is the working copy. Move to the left or right and use `dp` to put the change into the middle. Learn more: http://vimcasts.org/blog/2011/05/the-fugitive-series/
  * gitv - use :gitv for a better git log browser
- * GitGrep - much better than the grep provided with fugitive; use :GitGrep or hit K to grep current word
+ * GitGrep - much better than the grep provided with fugitive; use `:GitGrep` or hit `K` to grep current word
 
 #### Colors
 
  * AnsiEsc - inteprets ansi color codes inside log files. great for looking at Rails logs
  * solarized - a color scheme scientifically calibrated for awesomeness (including skwp mods for ShowMarks)
- * Powerline - beautiful vim status bar. Requires patched fonts (installed from fonts/ directory)
+ * Airline - Improved status bar. Requires patched fonts (installed from fonts/ directory)
 
 #### Coding
 
@@ -408,7 +407,6 @@ If you omit the key combo, you'll get a list of all the maps. You can do the sam
  * html-escape - ,he and ,hu to escape and unescape html
  * ruby-debug-ide - not quite working for me, but maybe it will for you. supposedly a graphical debugger you can step through
  * Gundo - visualize your undos - pretty amazing plugin. Hit ,u with my keymappings to trigger it, very user friendly
- * slime - use ctrl-c,ctrl-c to send text to a running irb/pry/console. To start the console, you must use screen with a named session: "screen -S [name] [cmd]", ex: "screen -S pry pry"
  * vim-indent-guides - visual indent guides, off by default
  * color_highlight - use :ColorCodes to see hex colors highlighted
  * change-inside-surroundings - change content inside delimiters like quotes/brackets
