@@ -121,6 +121,7 @@ alias ts='thin start'
 alias ms='mongrel_rails start'
 alias tfdl='tail -f log/development.log'
 alias tftl='tail -f log/test.log'
+alias bx='bundle exec'
 
 alias ka9='killall -9'
 alias k9='kill -9'
