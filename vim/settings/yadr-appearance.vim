@@ -1,7 +1,7 @@
 " Make it beautiful - colors and fonts
 " http://ethanschoonover.com/solarized/vim-colors-solarized
 colorscheme solarized
-set background=light
+set background=dark
 
 if has("gui_running")
   "tell the term has 256 colors
@@ -13,7 +13,7 @@ if has("gui_running")
   autocmd VimEnter * set guitablabel=%N:\ %t\ %M
 
   set lines=60
-  set columns=190
+  set columns=100
 
   if has("gui_gtk2")
     set guifont=Inconsolata\ XL\ 12,Inconsolata\ 15,Monaco\ 12
@@ -29,6 +29,3 @@ else
     let g:solarized_termtrans=1
   end
 endif
-
-colorscheme solarized
-set background=light
