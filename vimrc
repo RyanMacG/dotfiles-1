@@ -48,6 +48,11 @@ set noswapfile
 set nobackup
 set nowb
 
+" ============== Improve vim's scrolling speed ======
+set ttyfast
+set ttyscroll=3
+set lazyredraw
+
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
@@ -79,7 +84,7 @@ set linebreak    "Wrap lines at convenient points
 " ================ Folds ============================
 
 set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
+set foldnestmax=10       "deepest fold is 3 levels
 set nofoldenable        "dont fold by default
 
 " ================ Completion =======================
