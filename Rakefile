@@ -26,6 +26,7 @@ task :install => [:submodule_init, :submodules] do
   end
 
   Rake::Task["install_prezto"].execute
+  Rake::Task["install_tmp"].execute
 
   install_fonts
 
@@ -39,6 +40,12 @@ end
 task :install_prezto do
   if want_to_install?('zsh enhancements & prezto')
     install_prezto
+  end
+end
+
+task :install_tmp do
+  if want_to_install?('tmux package manager')
+    run %{git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm}
   end
 end
 
@@ -363,4 +370,6 @@ def success_msg(action)
   puts "  (_______\_____|\____|_|      "
   puts ""
   puts "YADR has been #{action}. Please restart your terminal and vim."
+  puts "If you added TPM you can follow https://github.com/tmux-plugins/tpm"
+  puts "And add the install steps to your .tmux.conf.user"
 end
