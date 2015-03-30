@@ -41,6 +41,7 @@ map ,jm :CtrlP app/models<CR>
 map ,jc :CtrlP app/controllers<CR>
 map ,jv :CtrlP app/views<CR>
 map ,jh :CtrlP app/helpers<CR>
+map ,jM :CtrlP app/mailers<CR>
 map ,jl :CtrlP lib<CR>
 map ,jp :CtrlP public<CR>
 map ,js :CtrlP spec<CR>
