@@ -16,7 +16,7 @@ endif
 
 " Default to filename searches - so that appctrl will find application
 " controller
-let g:ctrlp_by_filename = 0
+let g:ctrlp_by_filename = 1
 
 " Don't jump to already open window. This is annoying if you are maintaining
 " several Tab workspaces and want to open two windows into the same file.
@@ -41,6 +41,7 @@ map ,jm :CtrlP app/models<CR>
 map ,jc :CtrlP app/controllers<CR>
 map ,jv :CtrlP app/views<CR>
 map ,jh :CtrlP app/helpers<CR>
+map ,jM :CtrlP app/mailers<CR>
 map ,jl :CtrlP lib<CR>
 map ,jp :CtrlP public<CR>
 map ,js :CtrlP spec<CR>
