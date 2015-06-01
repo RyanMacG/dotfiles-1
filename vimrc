@@ -26,6 +26,9 @@ set autoread                    "Reload files changed outside vim
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
 
+" allow dogmatic in insert mode
+set cmdheight=2
+
 "turn on syntax highlighting
 syntax on
 
